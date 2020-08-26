@@ -91,7 +91,7 @@ public class HUD : MonoBehaviour {
 
     private void HandleReduceBlocksLeftEvent() {
         CountBlocksRemaining--;
-        Debug.Log(CountBlocksRemaining);
+        //Debug.Log(CountBlocksRemaining);
 
         // when last block remaining, adding the listener to game over event
         if (CountBlocksRemaining == 1) {
