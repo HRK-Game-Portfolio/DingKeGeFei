@@ -122,5 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b5469e40bf1a047b243c8c952e437e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CrashSprites:
+  - {fileID: 21300000, guid: d446412ff5149374e8bdcf2e12b7348c, type: 3}
   _standardBlockSpritesArr:
   - {fileID: 21300000, guid: 28a9213f02af8be43832f88be6fede76, type: 3}

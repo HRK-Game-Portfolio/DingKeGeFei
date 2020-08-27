@@ -33,4 +33,18 @@ public class StandardBlock : Block {
     {
         base.Update();
     }
+
+    protected override void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Ball")) {
+            if (!_isCrashSprite)
+            {
+                _spriteRenderer.sprite = CrashSprites[0];
+
+                _isCrashSprite = true;
+            }
+
+            _timer.Run();
+        }
+    }
 }

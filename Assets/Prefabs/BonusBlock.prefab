@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ce76d55727e174b8d13b2be8ca983b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CrashSprites:
+  - {fileID: 21300000, guid: 0b85a9b33e403da41ac2a898526a065e, type: 3}

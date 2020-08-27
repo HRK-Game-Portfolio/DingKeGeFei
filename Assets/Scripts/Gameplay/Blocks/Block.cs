@@ -9,9 +9,10 @@ public class Block : MonoBehaviour {
     private readonly PointsAddedEvent    _pointsAddedEvent    = new PointsAddedEvent();
     private readonly BlockDestroyedEvent _blockDestroyedEvent = new BlockDestroyedEvent();
 
-    protected Sprite CrashSprite;
+    [SerializeField] protected Sprite[] CrashSprites;
+    protected bool _isCrashSprite;
 
-    private Timer _timer;
+    protected Timer _timer;
 
     // ======================================================================
     // MonoBehaviour Methods
@@ -20,7 +21,9 @@ public class Block : MonoBehaviour {
     protected virtual void Start()
     {
         _timer = gameObject.AddComponent<Timer>();
-        _timer.Duration = 0.2f;
+        _timer.Duration = 0.15f;
+
+        _isCrashSprite = false;
     }
 
     protected virtual void Update()
@@ -48,8 +51,6 @@ public class Block : MonoBehaviour {
 
     protected virtual void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.CompareTag("Ball")) {
-
-
             _timer.Run();
         }
     }

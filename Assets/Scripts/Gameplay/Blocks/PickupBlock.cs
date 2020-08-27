@@ -90,7 +90,19 @@ public class PickupBlock : Block {
             // TODO: unsubscribe
         }
 
-        base.OnCollisionEnter2D(coll);
+        if (coll.gameObject.CompareTag("Ball")) {
+            if (!_isCrashSprite) {
+                if (PickupEffect == PickupEffect.Freezer) {
+                    _spriteRenderer.sprite = CrashSprites[0];
+                } else if (PickupEffect == PickupEffect.Speedup) {
+                    _spriteRenderer.sprite = CrashSprites[1];
+                }
+
+                _isCrashSprite = true;
+            }
+
+            _timer.Run();
+        }
     }
 
     // ======================================================================

@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec2734d92852cd43bab53b93f6f9976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CrashSprites:
+  - {fileID: 21300000, guid: 035ea7969a01f78448ea5ca2b4e29b5c, type: 3}
+  - {fileID: 21300000, guid: 76b210f3c20174749ac62fc345e20f66, type: 3}
   _pickupBlockSpriteArr:
   - {fileID: 21300000, guid: baeab1abfc68cce408b3d6029ce9eb7a, type: 3}
   - {fileID: 21300000, guid: 5e609e58be4e7b84984c388d8ceba927, type: 3}
