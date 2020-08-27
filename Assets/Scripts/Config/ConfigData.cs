@@ -23,7 +23,7 @@ public class ConfigData {
     private static float _bonusBlockProbability    = 10.0f;
     private static float _freezerBlockProbability  = 10.0f;
     private static float _speedupBlockProbability  = 10.0f;
-    private static int   _ballsPerGame             = 30;
+    private static int   _ballsPerGame             = 5;
     private static float _freezerDuration          = 2.0f;
     private static float _speedUpDuration          = 2.0f;
     private static float _speedUpFactor            = 3.0f;
