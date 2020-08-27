@@ -19,10 +19,10 @@ public class ConfigData {
     private static int   _standardBlockPoints      = 10;
     private static int   _bonusBlockPoints         = 20;
     private static int   _pickupBlockPoints        = 15;
-    private static float _standardBlockProbability = 50.0f;
-    private static float _bonusBlockProbability    = 20.0f;
-    private static float _freezerBlockProbability  = 15.0f;
-    private static float _speedupBlockProbability  = 15.0f;
+    private static float _standardBlockProbability = 70.0f;
+    private static float _bonusBlockProbability    = 10.0f;
+    private static float _freezerBlockProbability  = 10.0f;
+    private static float _speedupBlockProbability  = 10.0f;
     private static int   _ballsPerGame             = 30;
     private static float _freezerDuration          = 2.0f;
     private static float _speedUpDuration          = 2.0f;
