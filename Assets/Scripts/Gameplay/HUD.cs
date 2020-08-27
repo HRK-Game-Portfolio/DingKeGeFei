@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour {
     // Properties
     // ======================================================================
 
-    // gets the score  property to be accessed by the game over message prefab
+    // gets the score property to be accessed by the game over message prefab
     public static int Score {
         get => _score;
         set => _score = value;

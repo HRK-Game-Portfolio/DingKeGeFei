@@ -48,6 +48,9 @@ public class PopupMenus : MonoBehaviour {
         // will remain paused but we want it to start normal instead of paused
         Time.timeScale = 1;
         Destroy(gameObject);
+
+        // set score back to 0 before next session starts
+        HUD.Score = 0;
         MenuManager.GoToMenu(MenuName.Main);
     }
 }
