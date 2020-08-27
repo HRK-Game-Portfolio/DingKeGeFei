@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BonusBlock : Block {
-    void Start() {
+    protected override void Start() {
         ScoreWorth = ConfigUtils.BonusBlockPoints;
+
+        base.Start();
     }
 }

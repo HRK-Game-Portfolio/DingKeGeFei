@@ -56,7 +56,7 @@ public class PickupBlock : Block {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Start() {
+    protected override void Start() {
         ScoreWorth       = ConfigUtils.PickBlockPoints;
         _freezerDuration = ConfigUtils.FreezerDuration;
 
@@ -67,10 +67,12 @@ public class PickupBlock : Block {
         } else if (PickupEffect == PickupEffect.Speedup) {
             _spriteRenderer.sprite = _pickupBlockSpriteArr[1];
         }
+
+        base.Start();
     }
 
-    void Update() {
-        //Debug.Log(EventManager.SpeedUpEventInvoker);
+    protected override void Update() {
+        base.Update();
     }
 
     // Invoke the freeze and speed up effect events

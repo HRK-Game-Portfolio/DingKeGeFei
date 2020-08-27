@@ -9,12 +9,23 @@ public class Block : MonoBehaviour {
     private readonly PointsAddedEvent    _pointsAddedEvent    = new PointsAddedEvent();
     private readonly BlockDestroyedEvent _blockDestroyedEvent = new BlockDestroyedEvent();
 
+    protected Sprite CrashSprite;
+
+    private Timer _timer;
+
     // ======================================================================
     // MonoBehaviour Methods
     // ======================================================================
 
-    protected virtual void OnCollisionEnter2D(Collision2D coll) {
-        if (coll.gameObject.CompareTag("Ball")) {
+    protected virtual void Start()
+    {
+        _timer = gameObject.AddComponent<Timer>();
+        _timer.Duration = 0.2f;
+    }
+
+    protected virtual void Update()
+    {
+        if (_timer.Finished) {
             // register for the invokers in EventManager
             EventManager.AddPointsAddedInvoker(this);
             EventManager.AddBlockDestroyedInvoker(this);
@@ -32,6 +43,14 @@ public class Block : MonoBehaviour {
             _blockDestroyedEvent.Invoke();
 
             Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D coll) {
+        if (coll.gameObject.CompareTag("Ball")) {
+
+
+            _timer.Run();
         }
     }
 

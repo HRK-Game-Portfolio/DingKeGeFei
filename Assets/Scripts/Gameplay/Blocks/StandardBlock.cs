@@ -19,13 +19,18 @@ public class StandardBlock : Block {
     // MonoBehaviour Methods
     // ======================================================================
 
-    void Start() {
+    protected override void Start() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         int spriteIndex = Random.Range(0, _standardBlockSpritesArr.Length);
         _spriteRenderer.sprite = _standardBlockSpritesArr[spriteIndex];
 
         ScoreWorth = ConfigUtils.StandBlockPoints;
+
+        base.Start();
     }
 
-    void Update() { }
+    protected override void Update()
+    {
+        base.Update();
+    }
 }

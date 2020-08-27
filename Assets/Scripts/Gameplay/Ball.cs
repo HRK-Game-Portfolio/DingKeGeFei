@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour {
     // --------------- Fields to be attached Component Instances ---------------
 
     private Rigidbody2D _rigidbody2D;
-    private Timer       _ballLifeTimer;
+    //private Timer       _ballLifeTimer;
     private Timer       _speedUpTimer;
 
     // the Ball Spawner Script attached to Main Camera
@@ -122,18 +122,18 @@ public class Ball : MonoBehaviour {
 
     private void AddTimer() {
         // set the ball lifetime
-        _ballLifeTimer          = gameObject.AddComponent<Timer>();
-        _ballLifeTimer.Duration = ConfigUtils.BallLifetime;
-        _ballLifeTimer.Run();
+        //_ballLifeTimer          = gameObject.AddComponent<Timer>();
+        //_ballLifeTimer.Duration = ConfigUtils.BallLifetime;
+        //_ballLifeTimer.Run();
 
         // add the speed up timer for handling later speed up events
         _speedUpTimer = gameObject.AddComponent<Timer>();
     }
 
     private void DestroySelf() {
-        if (_ballLifeTimer.Finished) {
-            Destroy(gameObject);
-        }
+        //if (_ballLifeTimer.Finished) {
+        //    Destroy(gameObject);
+        //}
 
         if (transform.position.y < ScreenUtils.ScreenBottom - 1 ||
             transform.position.y > ScreenUtils.ScreenTop    + 1 ||

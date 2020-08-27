@@ -57,14 +57,16 @@ public class LevelBuilder : MonoBehaviour {
         // - divide the total interval by (block count - 1) to obtain the width of one single interval
         // - set each block (block width + one single interval) apart from each other
         // - start counting from x = 0, then minus the x-pos of each block by a half screen width
-        _screenWidth        = ScreenUtils.ScreenRight * 1;
-        _blockWidth         = _prefabStandardBlock.GetComponent<BoxCollider2D>().size.x;
+        _screenWidth        = ScreenUtils.ScreenRight * 1.5f;
+        _blockWidth         = _prefabStandardBlock.GetComponent<BoxCollider2D>().size.x * 2.5f; // scale size
         _horiBlockCount     = (int) Mathf.Floor(_screenWidth / _blockWidth);
-        _blockGapWidthTotal = _screenWidth - _blockWidth * _horiBlockCount;
+        _blockGapWidthTotal = _screenWidth * 1.25f - _blockWidth * _horiBlockCount; // use 1.75 screen
         _blockGapWidth      = _blockGapWidthTotal / (_horiBlockCount - 1);
 
+        Debug.Log(_blockWidth);
+
         _rowCount    = 3;
-        _blockHeight = _prefabStandardBlock.GetComponent<BoxCollider2D>().size.y;
+        _blockHeight = _prefabStandardBlock.GetComponent<BoxCollider2D>().size.y * 2.5f * 1.25f; // scale size
 
         // 1/5 of the screen height down from the top is 3/5 above the horizon
         _firstRowYPos = 3f / 5f * ScreenUtils.ScreenTop;
@@ -118,7 +120,7 @@ public class LevelBuilder : MonoBehaviour {
 
                 Instantiate(_prefabRandomBlock,
                     new Vector2(
-                        ScreenUtils.ScreenLeft / 2 + _blockWidth / 2 + j * (_blockWidth + _blockGapWidth),
+                        ScreenUtils.ScreenLeft + _blockWidth + j * (_blockWidth + _blockGapWidth),
                         _firstRowYPos - i * _blockHeight),
                     Quaternion.identity);
             }

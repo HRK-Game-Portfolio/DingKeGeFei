@@ -16,7 +16,7 @@ public class BallSpawner : MonoBehaviour {
 
     // --------------- Fields to be attached Component Instances ---------------
 
-    private Timer _timer;
+    //private Timer _timer;
 
     // --------------- Config Params ---------------
 
@@ -43,8 +43,8 @@ public class BallSpawner : MonoBehaviour {
 
         _firstBallSpawned = false;
 
-        _timer          = gameObject.AddComponent<Timer>();
-        _timer.Duration = 7.5f;
+        //_timer          = gameObject.AddComponent<Timer>();
+        //_timer.Duration = 7.5f;
 
         EventManager.AddSpawnNewBallsListener(HandleSpawnNewBallEvent);
     }
@@ -54,16 +54,16 @@ public class BallSpawner : MonoBehaviour {
             InitialLaunchOnSpacePressed();
         }
 
-        if (_timer.Finished) {
-            HandleSpawnNewBallEvent();
-            //Debug.Log("Spawning at " + Time.time + "s, due to spawner automatic timer");
+        //if (_timer.Finished) {
+        //    HandleSpawnNewBallEvent();
+        //    //Debug.Log("Spawning at " + Time.time + "s, due to spawner automatic timer");
 
-            _spawnInterval = Random.Range(
-                ConfigUtils.MinSpawnTime,
-                ConfigUtils.MaxSpawnTime);
-            _timer.Duration = _spawnInterval;
-            _timer.Run();
-        }
+        //    _spawnInterval = Random.Range(
+        //        ConfigUtils.MinSpawnTime,
+        //        ConfigUtils.MaxSpawnTime);
+        //    _timer.Duration = _spawnInterval;
+        //    _timer.Run();
+        //}
     }
 
     // ======================================================================
@@ -77,7 +77,7 @@ public class BallSpawner : MonoBehaviour {
             // when game starts, get rid of the instruction text
             _startText.text = "";
 
-            _timer.Run();
+            //_timer.Run();
         }
     }
 
