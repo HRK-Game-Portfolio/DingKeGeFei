@@ -1,2 +1,2 @@
 PaddleMoveUnitsPerSecond,BallImpulseForce,BallLifetime,MinSpawnTime,MaxSpawnTime,StandardBlockPoints,BonusBlockPoints,PickupBlockPoints,StandardBlockSpawnProbability,BonusBlockSpawnProbability,FreezerBlockSpawnProbability,SpeedupBlockSpawnProbability,BallsPerGame,FreezerDuration,SpeedUpDuration,SpeedUpFactor
-30,300,10,5,10,10,20,15,60,15,10,15,30,2,0.75,3
+30,300,10,5,10,10,20,15,70,10,10,10,30,2,0.75,3

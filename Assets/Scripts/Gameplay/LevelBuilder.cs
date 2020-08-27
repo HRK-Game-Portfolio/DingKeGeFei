@@ -63,7 +63,7 @@ public class LevelBuilder : MonoBehaviour {
         _blockGapWidthTotal = _screenWidth * 1.25f - _blockWidth * _horiBlockCount; // use 1.75 screen
         _blockGapWidth      = _blockGapWidthTotal / (_horiBlockCount - 1);
 
-        Debug.Log(_blockWidth);
+        //Debug.Log(_blockWidth);
 
         _rowCount    = 3;
         _blockHeight = _prefabStandardBlock.GetComponent<BoxCollider2D>().size.y * 2.5f * 1.25f; // scale size

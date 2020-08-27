@@ -105,6 +105,11 @@ public class Ball : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D coll) {
+        // Debug.Log("------------------------------------");
+        // Debug.Log(_speedUpTimer.Finished);
+        // Debug.Log(EffectUtils.IsUniversalSpeedUp);
+        // Debug.Log(_isSlowedDown);
+
         if (coll.gameObject.CompareTag("Block") && !_speedUpTimer.Running)
         {
             _spriteTimer.Duration = 0.3f;
