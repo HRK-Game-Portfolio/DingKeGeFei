@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour {
 
     // --------------- Serialized Cached References ---------------
 
+    [SerializeField] private Sprite[] _ballSpriteArr;
 
     // --------------- Fields to be attached Component Instances ---------------
 
@@ -29,6 +30,11 @@ public class Ball : MonoBehaviour {
     private readonly BallDiesEvent        _ballDiesEvent        = new BallDiesEvent();
     private readonly LastBallLostEvent    _lastBallLostEvent    = new LastBallLostEvent();
 
+    // switch sprite timer
+    private Timer _spriteTimer;
+
+    private SpriteRenderer _spriteRenderer;
+
     // --------------- Config Params ---------------
 
     private float   _launchAngle;
@@ -36,21 +42,27 @@ public class Ball : MonoBehaviour {
     private float   _launchDelay;
     private bool    _ballMoving;
     private bool    _isSlowedDown;
+    private bool    _isCrashSprite;
 
     // ======================================================================
     // Main Loop
     // ======================================================================
+
+    void Awake() {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         _ballSpawner = FindObjectOfType<BallSpawner>();
 
-        _launchAngle  = 20f;
-        _launchDir2D  = new Vector2(Mathf.Cos(_launchAngle), Mathf.Sin(_launchAngle));
-        _launchDelay  = 1.0f;
-        _ballMoving   = false;
-        _isSlowedDown = false;
+        _launchAngle   = 20f;
+        _launchDir2D   = new Vector2(Mathf.Cos(_launchAngle), Mathf.Sin(_launchAngle));
+        _launchDelay   = 1.0f;
+        _ballMoving    = false;
+        _isSlowedDown  = false;
+        _isCrashSprite = false;
 
         AddTimer();
 
@@ -71,6 +83,7 @@ public class Ball : MonoBehaviour {
     void Update() {
         LaunchBall();
         SpeedDown();
+        SwitchBackSprite();
         DestroySelf();
     }
 
@@ -89,6 +102,18 @@ public class Ball : MonoBehaviour {
         // be careful with the text since when closing the game, the text became invisible 
         // but the method is still getting access to it
         //HUD.HandleReduceBallsLeftEvent();
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D coll) {
+        if (coll.gameObject.CompareTag("Block") && !_speedUpTimer.Running)
+        {
+            _spriteTimer.Duration = 0.3f;
+            _spriteTimer.Run();
+
+            _spriteRenderer.sprite = _ballSpriteArr[1];
+
+            _isCrashSprite = true;
+        }
     }
 
     // ======================================================================
@@ -128,6 +153,9 @@ public class Ball : MonoBehaviour {
 
         // add the speed up timer for handling later speed up events
         _speedUpTimer = gameObject.AddComponent<Timer>();
+
+        // add the switch sprite timer to handle switching sprite functionality when colliding
+        _spriteTimer = gameObject.AddComponent<Timer>();
     }
 
     private void DestroySelf() {
@@ -178,6 +206,16 @@ public class Ball : MonoBehaviour {
 
             // _isSlowedDown field to prevent force being iteratively added
             _isSlowedDown = true;
+        }
+    }
+
+    // TODO: make this a timer finished event
+    private void SwitchBackSprite()
+    {
+        if (_spriteTimer.Finished && _isCrashSprite)
+        {
+            _spriteRenderer.sprite = _ballSpriteArr[0];
+            _isCrashSprite = false;
         }
     }
 

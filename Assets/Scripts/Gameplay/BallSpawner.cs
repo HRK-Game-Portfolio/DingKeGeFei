@@ -87,9 +87,12 @@ public class BallSpawner : MonoBehaviour {
             _spawnLocation    = new Vector2(0, ScreenUtils.ScreenBottom * 1 / 2);
             _firstBallSpawned = true;
         } else {
-            _spawnLocation = new Vector2(
-                Random.Range(ScreenUtils.ScreenLeft, ScreenUtils.ScreenRight),
-                Random.Range(0,                      ScreenUtils.ScreenTop));
+            //_spawnLocation = new Vector2(
+            //    Random.Range(ScreenUtils.ScreenLeft, ScreenUtils.ScreenRight),
+            //    Random.Range(0,                      ScreenUtils.ScreenTop));
+
+            // not so wacky implementation, spawn the ball at some position
+            _spawnLocation = new Vector2(0, ScreenUtils.ScreenBottom * 1 / 2);
         }
 
         // ----- check the box collider overlapping -----
